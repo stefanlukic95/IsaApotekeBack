@@ -20,8 +20,8 @@ public class PregledServiceImp implements PregledService {
 
     //po id
     @Override
-    public Optional<Pregled> findOne(Integer id) {
-        return pregledRepository.findById(id);
+    public Pregled findOne(Integer id) {
+        return pregledRepository.findById(id).orElse(null);
     }
 
     @Override

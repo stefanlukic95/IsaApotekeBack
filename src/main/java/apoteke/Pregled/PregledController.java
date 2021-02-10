@@ -42,13 +42,13 @@ public class PregledController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Optional<Pregled>> getPregledById(@PathVariable("id") Integer id) {
+    public ResponseEntity<Pregled> getPregledById(@PathVariable("id") Integer id) {
 
-        Optional<Pregled> pregled = this.pregledService.findOne(id);
+        Pregled pregled = this.pregledService.findOne(id);
         if(pregled == null){
-            return new ResponseEntity<Optional<Pregled>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Pregled>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Optional<Pregled>>(pregled, HttpStatus.OK);
+        return new ResponseEntity<Pregled>(pregled, HttpStatus.OK);
 
     }
 

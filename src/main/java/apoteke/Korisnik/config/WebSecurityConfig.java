@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
 
                 .antMatchers("/token/*", "/").permitAll()
-                .antMatchers(HttpMethod.POST,"/apoteke","/lekovi").hasAuthority("ADMINKLINIKE")
+                .antMatchers(HttpMethod.POST,"/apoteke","/lekovi").hasAuthority("ADMINISRATOR")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -64,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/savetovanja/apoteke/*","/savetovanja/*","/savetovanje/*","/savetovanja","/lekovi/apoteke/*"," /akcije","/akcija/*","/akcije/apoteke/*","/akcije/*","/lekovi/*","/pregledi","/pregledi/*","/user/*/","/generate-token","rezervacijeLek","/login","/user/*","/user","/register","/confirm","/korisnici","/korisnik/*","/lekovi","/lek/*","/apoteke","/apoteka/*","/pregledi","/pregled/*","/rezervacije","/rezervacija/*","/rezervacijaPredef/*","/rezervacijaPredefUpdt/*","/lekovi/search","/rezervacijeLek","/rezervacijaLek/*");
+        web.ignoring().antMatchers("/akcije","/apoteka/*","/user/*/*","/savetovanja/apoteke/*","/savetovanja/*","/savetovanje/*","/savetovanja","/lekovi/apoteke/*"," /akcije","/akcija/*","/akcije/apoteke/*","/akcije/*","/lekovi/*","/pregledi","/pregledi/*","/user/*/","/generate-token","rezervacijeLek","/login","/user/*","/user","/register","/confirm","/korisnici","/korisnik/*","/lekovi","/lek/*","/apoteke","/apoteka/*","/pregledi","/pregled/*","/rezervacije","/rezervacija/*","/rezervacijaPredef/*","/rezervacijaPredefUpdt/*","/lekovi/search","/rezervacijeLek","/rezervacijaLek/*");
 
     }
 

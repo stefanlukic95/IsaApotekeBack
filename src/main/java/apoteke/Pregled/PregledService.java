@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface PregledService {
     List<Pregled> findAll();
-    Optional<Pregled> findOne(Integer id);
+    Pregled findOne(Integer id);
     Pregled create(Pregled lek) throws Exception;
     void delete(Integer id);
 

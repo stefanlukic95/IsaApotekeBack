@@ -62,7 +62,7 @@ public class AkcijaController {
 
     }
 
-    //post za novu apoteku
+    //post za novu akciju
     @RequestMapping(
             method = RequestMethod.POST,
             value = "/akcije/apoteke/{id}",
@@ -79,7 +79,7 @@ public class AkcijaController {
 
 
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
-        registrationEmail.setTo("stefan.lukic@yahoo.com");
+        registrationEmail.setTo("stefan.lukic@yahoo.com","stefan.lukic777@gmail.com");
         registrationEmail.setSubject("Аkcije!");
         registrationEmail.setText("Nove akcije su u toku");
         registrationEmail.setFrom("poseti.me.isa@gmail.com");
@@ -94,7 +94,7 @@ public class AkcijaController {
         Apoteka apotekaa = this.apotekaService.findOne(id);
 
 
-            apotekaa.setAkcije(akcije);
+            apotekaa.getAkcije().add(createdAkcija);
             this.apotekaService.update(apotekaa);
 
         return new ResponseEntity<Akcija>(createdAkcija, HttpStatus.CREATED);

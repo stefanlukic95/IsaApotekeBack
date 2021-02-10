@@ -115,7 +115,7 @@ public class KorisnikController {
         }
 
         List<String> roles = new ArrayList<String>();
-        roles.add("ADMINISTRATOR");
+        roles.add("PACIJENT");
         korisnik.setRoles(roles);
         korisnik.setEnabled(false);
         korisnik.setPasswordChanged(false);
@@ -169,7 +169,7 @@ public class KorisnikController {
 
         user.setIme(korisnik.getIme());
         user.setPrezime(korisnik.getPrezime());
-       // user.getLek_alergija().add(lek);
+        user.setRezervisani_lekovi(korisnik.getRezervisani_lekovi());
 
         Korisnik updatedUser = this.korisnikService.save(user);
 

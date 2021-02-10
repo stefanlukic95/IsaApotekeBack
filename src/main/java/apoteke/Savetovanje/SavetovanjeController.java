@@ -82,6 +82,7 @@ public class SavetovanjeController {
         ArrayList<Savetovanje> savetovanja = new ArrayList<>();
         savetovanja.add(createdSavetovanje);
 
+        createdSavetovanje.setPacijent(k.getIme());
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
         registrationEmail.setTo(k.getEmail());
         registrationEmail.setSubject("Savetovanje");

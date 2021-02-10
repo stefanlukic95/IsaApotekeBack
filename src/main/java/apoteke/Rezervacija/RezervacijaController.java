@@ -49,11 +49,11 @@ public class RezervacijaController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String name = user.getUsername();
         Korisnik k = this.korisnikService.findByEmail(name);
-        Optional<Pregled> pregled = this.pregledService.findOne(pregledId);
+        Pregled pregled = this.pregledService.findOne(pregledId);
 
 
         createdRezervacija.setPacijent(name);
-        createdRezervacija.setPregled(pregled.get());
+        createdRezervacija.setPregled(pregled);
 
 
 

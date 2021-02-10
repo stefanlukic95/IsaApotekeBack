@@ -57,7 +57,7 @@ public class LekRezervacijaController {
 
         createdRezervacija.setPacijent(name);
         createdRezervacija.setLek(lek);
-        createdRezervacija.setDatum_vreme(createdRezervacija.getDatum_vreme());
+
 
 
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
@@ -68,8 +68,9 @@ public class LekRezervacijaController {
         emailService.sendEmail(registrationEmail);
 
         createdRezervacija.getLek().setRezervisan(true);
-        lekRezervacijaService.insert(createdRezervacija);
         k.getRezervisani_lekovi().add(lek);
+        lekRezervacijaService.insert(createdRezervacija);
+
 
         return new ResponseEntity<LekRezervacija>(createdRezervacija, HttpStatus.CREATED);
     }

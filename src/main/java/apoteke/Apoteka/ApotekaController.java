@@ -113,19 +113,20 @@ public class ApotekaController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Apoteka> updateApoteka(@PathVariable("id") Integer id, @RequestBody Apoteka apoteka) throws Exception {
-        Apoteka apotekaa = this.apotekaRepository.findById(id).orElse(null);
+        Apoteka apotekaa = this.apotekaService.findOne(id);
 
         if (apotekaa == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        apotekaa.setNaziv(apoteka.getNaziv());
-        apotekaa.setOpis(apoteka.getOpis());
-        apotekaa.setAkcije(apoteka.getAkcije());
-        apotekaa.setAdresa(apoteka.getAdresa());
-        apoteka.setDermatolozi(apoteka.getDermatolozi());
-        apoteka.setFarmaceuti(apoteka.getFarmaceuti());
-        apoteka.setLekovi(apoteka.getLekovi());
+       // apotekaa.setNaziv(apoteka.getNaziv());
+        //apotekaa.setOpis(apoteka.getOpis());
+        //apotekaa.setAkcije(apoteka.getAkcije());
+        //apotekaa.setAdresa(apoteka.getAdresa());
+        apotekaa.setAdministratorApoteke(apoteka.getAdministratorApoteke());
+        apotekaa.setDermatolozi(apoteka.getDermatolozi());
+        apotekaa.setFarmaceuti(apoteka.getFarmaceuti());
+       // apotekaa.setLekovi(apoteka.getLekovi());
 
         Apoteka updateApoteka = this.apotekaService.update(apotekaa);
 
