@@ -62,11 +62,11 @@ public class PregledController {
     public ResponseEntity<Pregled> insertPregled(@RequestBody Pregled pregled,@PathVariable ("id") Integer id) throws Exception{
 
         Pregled createdPregled  = this.pregledService.create(pregled);
-        ArrayList<Pregled> pregledi = new ArrayList<>();
-        pregledi.add(createdPregled);
+        /*ArrayList<Pregled> pregledi = new ArrayList<>();
+        pregledi.add(createdPregled);*/
 
         Apoteka apotekaa = this.apotekaService.findOne(id);
-        apotekaa.setPregledi(pregledi);
+        apotekaa.getPregledi().add(createdPregled);
         this.apotekaService.update(apotekaa);
 
         return new ResponseEntity<Pregled>(createdPregled, HttpStatus.CREATED);
@@ -76,7 +76,7 @@ public class PregledController {
     //brisanje pregleda po id-u
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = "/pregled/{id}"
+            value = "/pregledi/{id}"
     )
     public ResponseEntity<Pregled> deletePregled(@PathVariable("id") Integer id){
 

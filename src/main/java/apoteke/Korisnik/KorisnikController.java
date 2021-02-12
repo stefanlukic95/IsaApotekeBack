@@ -31,9 +31,6 @@ public class KorisnikController {
     private BCryptPasswordEncoder bcryptEncoder;
 
 
-/*    @Autowired
-    private LekService lekService;*/
-
 
     public KorisnikController(KorisnikService korisnikService) {
         this.korisnikService = korisnikService;

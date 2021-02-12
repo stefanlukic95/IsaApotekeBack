@@ -3,6 +3,7 @@ package apoteke.Apoteka;
 
 import apoteke.Korisnik.Korisnik;
 import apoteke.Lek.Lek;
+import apoteke.Narudzbenice.Narudzbenica;
 import apoteke.Pregled.Pregled;
 import apoteke.Savetovanje.Savetovanje;
 import apoteke.akcije.Akcija;
@@ -32,7 +33,6 @@ public class Apoteka {
     @ElementCollection
     @OneToMany
     private List<Lek> lekovi;
-    //private Cenovnik cenovnik;
     @ElementCollection
     @OneToMany
     private List<Akcija> akcije;
@@ -45,12 +45,15 @@ public class Apoteka {
     @ElementCollection
     @OneToMany
     private List<Savetovanje> savetovanja;
+    @ElementCollection
+    @OneToMany
+    private List<Narudzbenica> narudzbenice;
 
      
     public Apoteka(){
 
     }
-    public Apoteka(Integer id, String naziv, String adresa, String opis, List<Korisnik> dermatolozi, List<Korisnik> farmaceuti,List<Lek> lekovi,List<Akcija> akcije,List<Pregled> pregledi,Korisnik administratorApoteke,List<Savetovanje> savetovanja) {
+    public Apoteka(Integer id, String naziv, String adresa, String opis, List<Korisnik> dermatolozi, List<Korisnik> farmaceuti,List<Lek> lekovi,List<Akcija> akcije,List<Pregled> pregledi,Korisnik administratorApoteke,List<Savetovanje> savetovanja,List<Narudzbenica> narudzbenice) {
         this.id = id;
         this.naziv = naziv;
         this.adresa = adresa;
@@ -62,6 +65,7 @@ public class Apoteka {
         this.pregledi = pregledi;
         this.administratorApoteke = administratorApoteke;
         this.savetovanja = savetovanja;
+        this.narudzbenice = narudzbenice;
     }
 
     public Integer getId() {
@@ -150,5 +154,13 @@ public class Apoteka {
 
     public void setSavetovanja(List<Savetovanje> savetovanja) {
         this.savetovanja = savetovanja;
+    }
+
+    public List<Narudzbenica> getNarudzbenice() {
+        return narudzbenice;
+    }
+
+    public void setNarudzbenice(List<Narudzbenica> narudzbenice) {
+        this.narudzbenice = narudzbenice;
     }
 }

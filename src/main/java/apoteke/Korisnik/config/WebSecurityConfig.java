@@ -53,7 +53,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
 
                 .antMatchers("/token/*", "/").permitAll()
-                .antMatchers(HttpMethod.POST,"/apoteke","/lekovi").hasAuthority("ADMINISRATOR")
+                .antMatchers(HttpMethod.POST,"/apoteke","/apoteka/*").hasAuthority("ADMINISRATOR")
+                .antMatchers(HttpMethod.POST,"/godisnjiOdmori").hasAuthority("DERMATOLOG")
+                .antMatchers(HttpMethod.POST,"/godisnjiOdmori").hasAuthority("FARMACEUT")
+                .antMatchers(HttpMethod.POST, "/rezervacijaLek/*","/rezervacijaPredef/*", "/rezervacijaPredefUpdt/*","/rezervacije","/rezervacije/*","/savetovanja/apoteke/*").hasAuthority("PACIJENT")
+                .antMatchers(HttpMethod.GET,"/rezervacijeLek","/rezervacijaLek/*","/godisnjiOdmori","/narudzbenice","/narudzbenica/*","/savetovanja","/savetovanje/*").hasAuthority("ADMINAPOTEKE")
+                .antMatchers(HttpMethod.POST,"/apoteke","/apoteka/*","/lekovi/apoteke/*","/pregledi/apoteke/*","/akcije/apoteke/*","/narudzbenice/apoteke/*").hasAuthority("ADMINAPOTEKE")
+                .antMatchers(HttpMethod.PUT,"/apoteka/*").hasAuthority("ADMINISTRATOR")
+                .antMatchers(HttpMethod.PUT,"/lek/*","/akcija/*","/godisnjiOdmor/*","/narudzbenica/*","/savetovanje/*").hasAuthority("ADMINAPOTEKE")
+                .antMatchers(HttpMethod.GET,"/akcije","/akcija/*","/apoteke","/lekovi","/lek/*","/lekovi/search","/farmaceuti","/dermatolozi","/akcije","/korisnici","/apoteke/search","/apoteke/searchAdresa","/pregledi","/pregled/*").permitAll()
+                .antMatchers(HttpMethod.DELETE,"/apoteka/*").hasAuthority("ADMINISRATOR")
+                .antMatchers(HttpMethod.DELETE,"/lek/*","/rezervacijaLek/*","/rezervacije/*","/pregledi/*","/akcija/*","/godisnjiOdmor/*","/narudzbenica/*","/savetovanje/*").hasAuthority("ADMINAPOTEKE")
+                .antMatchers(HttpMethod.DELETE,"/rezervacije/*").hasAuthority("PACIJENT")
+
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -64,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/akcije","/apoteka/*","/user/*/*","/savetovanja/apoteke/*","/savetovanja/*","/savetovanje/*","/savetovanja","/lekovi/apoteke/*"," /akcije","/akcija/*","/akcije/apoteke/*","/akcije/*","/lekovi/*","/pregledi","/pregledi/*","/user/*/","/generate-token","rezervacijeLek","/login","/user/*","/user","/register","/confirm","/korisnici","/korisnik/*","/lekovi","/lek/*","/apoteke","/apoteka/*","/pregledi","/pregled/*","/rezervacije","/rezervacija/*","/rezervacijaPredef/*","/rezervacijaPredefUpdt/*","/lekovi/search","/rezervacijeLek","/rezervacijaLek/*");
+        web.ignoring().antMatchers("/user/*/*","/user/*/","/generate-token","/login","/user/*","/user","/register","/confirm","/korisnik/*");
 
     }
 
